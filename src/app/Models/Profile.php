@@ -15,6 +15,6 @@ class Profile extends Model
 
     public function worker(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Worker::class , 'worker_id', 'id');
+        return $this->belongsTo(Worker::class);
     }
 }

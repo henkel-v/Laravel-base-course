@@ -16,16 +16,16 @@ class Worker extends Model
 
     public function profile(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
-        return $this->hasOne(Profile::class, 'worker_id', 'id');
+        return $this->hasOne(Profile::class);
     }
 
     public function position(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Position::class, 'position_id', 'id');
+        return $this->belongsTo(Position::class);
     }
 
     public function projects(): BelongsToMany
     {
-        return $this->BelongsToMany(Project::class, 'project_workers', 'worker_id', 'project_id');
+        return $this->BelongsToMany(Project::class);
     }
 }

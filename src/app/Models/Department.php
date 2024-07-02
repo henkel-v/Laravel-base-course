@@ -15,12 +15,12 @@ class Department extends Model
 
     public function ceo(): \Illuminate\Database\Eloquent\Relations\HasOneThrough
     {
-        return $this->hasOneThrough(Worker::class, Position::class, 'department_id', 'position_id', 'id', 'id')
+        return $this->hasOneThrough(Worker::class, Position::class)
             ->where('position_id', 4);
     }
 
     public function workers(): \Illuminate\Database\Eloquent\Relations\HasManyThrough
     {
-        return $this->HasManyThrough(Worker::class, Position::class, 'department_id', 'position_id', 'id', 'id');
+        return $this->HasManyThrough(Worker::class, Position::class);
     }
 }

@@ -28,4 +28,9 @@ class Worker extends Model
     {
         return $this->BelongsToMany(Project::class);
     }
+
+    public function avatar(): \Illuminate\Database\Eloquent\Relations\MorphOne
+    {
+        return $this->morphOne(Avatar::class, 'avatarable');
+    }
 }

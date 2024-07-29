@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Avatar;
+use App\Models\Client;
 use App\Models\Department;
 use App\Models\Position;
 use App\Models\Profile;
@@ -31,12 +33,17 @@ class DevCommand extends Command
      */
     public function handle()
     {
-        $worker = Worker::find(1);
-        dd($worker->position->department->toArray());
+        // $this->prepareData();
+        // $this->prepareManyToMany();
 
+        $client = Client::find(1);
+        // dd($client->avatar->toArray());
+
+        $avatar = Avatar::find(3);
+        // dd($avatar->avatarable->toArray());
     }
 
-    protected function prepareData(): void
+    protected function  prepareData(): void
     {
         $department1 = Department::create([
             'title' => 'IT Department',

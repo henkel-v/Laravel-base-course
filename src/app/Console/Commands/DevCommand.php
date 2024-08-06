@@ -42,7 +42,8 @@ class DevCommand extends Command
 
         $review = Review::find(4);
         dd($review->reviewable->toArray());
-
+        // $this->prepareData();
+        // $this->prepareManyToMany();
     }
 
     protected function  prepareData(): void

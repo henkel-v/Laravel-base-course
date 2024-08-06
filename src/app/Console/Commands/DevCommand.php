@@ -8,6 +8,7 @@ use App\Models\Department;
 use App\Models\Position;
 use App\Models\Profile;
 use App\Models\Project;
+use App\Models\Review;
 use App\Models\User;
 use App\Models\Worker;
 use Illuminate\Console\Command;
@@ -33,18 +34,30 @@ class DevCommand extends Command
      */
     public function handle()
     {
-        // $this->prepareData();
-        // $this->prepareManyToMany();
+//         $this->prepareData();
+//         $this->prepareManyToMany();
 
-        $client = Client::find(1);
-        // dd($client->avatar->toArray());
+        $worker = Worker::find(5);
+        $client = Client::find(2);
 
-        $avatar = Avatar::find(3);
-        // dd($avatar->avatarable->toArray());
+        $review = Review::find(1);
+
+        dd($review->reviewable->toArray());
     }
 
     protected function  prepareData(): void
     {
+
+        Client::create([
+            'name' => 'Bob'
+        ]);
+        Client::create([
+            'name' => 'Nill'
+        ]);
+        Client::create([
+            'name' => 'Tagil'
+        ]);
+
         $department1 = Department::create([
             'title' => 'IT Department',
         ]);

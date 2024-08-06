@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Worker extends Model
 {
@@ -29,8 +31,13 @@ class Worker extends Model
         return $this->BelongsToMany(Project::class);
     }
 
-    public function avatar(): \Illuminate\Database\Eloquent\Relations\MorphOne
+    public function avatar(): MorphOne
     {
         return $this->morphOne(Avatar::class, 'avatarable');
+    }
+
+    public function reviews(): MorphMany
+    {
+        return $this->morphMany(Review::class, 'reviewable');
     }
 }

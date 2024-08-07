@@ -37,19 +37,11 @@ class DevCommand extends Command
     {
 //         $this->prepareData();
 //         $this->prepareManyToMany();
-
-        $worker = Worker::find(1);
-        $client = Client::find(2);
-
-//        $worker->tags()->attach([1, 2]);
-//        $client->tags()->attach([1, 3]);
-
-        $tag = Tag::find(1);
-
-        dd($tag->clients->toArray());
+        $position = Position::first();
+        dd($position->queryWorker->toArray());
     }
 
-    protected function  prepareData(): void
+    protected function   prepareData(): void
     {
 
         Client::create([

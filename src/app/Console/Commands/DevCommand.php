@@ -9,6 +9,7 @@ use App\Models\Position;
 use App\Models\Profile;
 use App\Models\Project;
 use App\Models\Review;
+use App\Models\Tag;
 use App\Models\User;
 use App\Models\Worker;
 use Illuminate\Console\Command;
@@ -37,12 +38,15 @@ class DevCommand extends Command
 //         $this->prepareData();
 //         $this->prepareManyToMany();
 
-        $worker = Worker::find(5);
+        $worker = Worker::find(1);
         $client = Client::find(2);
 
-        $review = Review::find(1);
+//        $worker->tags()->attach([1, 2]);
+//        $client->tags()->attach([1, 3]);
 
-        dd($review->reviewable->toArray());
+        $tag = Tag::find(1);
+
+        dd($tag->clients->toArray());
     }
 
     protected function  prepareData(): void

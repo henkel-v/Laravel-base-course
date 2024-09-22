@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\Worker\CreatedEvent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -16,6 +17,13 @@ class Worker extends Model
     protected $table = 'workers';
 
     protected $guarded = false;
+
+    protected static function booted(): void
+    {
+        static::created(function ($model) {
+            event(new CreatedEvent($model));
+        });
+    }
 
     public function profile(): \Illuminate\Database\Eloquent\Relations\HasOne
     {

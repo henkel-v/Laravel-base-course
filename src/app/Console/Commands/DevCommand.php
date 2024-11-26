@@ -35,11 +35,9 @@ class DevCommand extends Command
      */
     public function handle()
     {
-        $worker = Worker::find(1);
-        $worker->update([
-            'age' => '25'
-        ]);
-
-        return 0;
+        $workers = Worker::onlyTrashed()->get();
+        foreach ($workers as $worker) {
+            $worker->restore();
+        }
     }
 }

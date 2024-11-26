@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Jobs\SomeJob;
 use App\Models\Avatar;
 use App\Models\Client;
 use App\Models\Department;
@@ -35,11 +36,7 @@ class DevCommand extends Command
      */
     public function handle()
     {
-        $worker = Worker::find(1);
-        $worker->update([
-            'age' => '25'
-        ]);
-
+        SomeJob::dispatch()->onQueue('some_queue');
         return 0;
     }
 }
